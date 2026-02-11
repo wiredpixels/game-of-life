@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://c2psv7p07twbk"]
+
+[ext_resource type="Script" uid="uid://dbph5pttun2v5" path="res://UI/ui.gd" id="1_2fwl4"]
+
+[node name="UI" type="CanvasLayer" unique_id=1264299520]
+script = ExtResource("1_2fwl4")
+
+[node name="Controls" type="PanelContainer" parent="." unique_id=316024574]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls" unique_id=1322849581]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls/MarginContainer" unique_id=1974308062]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonUnpause" type="Button" parent="Controls/MarginContainer/HBoxContainer" unique_id=1818943811]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Unpause"
+
+[node name="ButtonClearAll" type="Button" parent="Controls/MarginContainer/HBoxContainer" unique_id=209567168]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Clear All"
+
+[node name="ButtonInstructions" type="Button" parent="Controls/MarginContainer/HBoxContainer" unique_id=1798668841]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Instructions"
+
+[node name="VSeparator" type="VSeparator" parent="Controls/MarginContainer/HBoxContainer" unique_id=1373246634]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelDelay" type="Label" parent="Controls/MarginContainer/HBoxContainer" unique_id=1816115192]
+layout_mode = 2
+text = "Delay Between Frames (ms):"
+
+[node name="ButtonMinus" type="Button" parent="Controls/MarginContainer/HBoxContainer" unique_id=1404999641]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "  -  "
+
+[node name="LabelDelayValue" type="Label" parent="Controls/MarginContainer/HBoxContainer" unique_id=1383194556]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonPlus" type="Button" parent="Controls/MarginContainer/HBoxContainer" unique_id=2073339482]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "  +  "
+
+[node name="Instructions" type="PanelContainer" parent="." unique_id=902809697]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.5
+offset_top = -68.0
+offset_right = 144.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Instructions" unique_id=1568577902]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Instructions/MarginContainer" unique_id=1559136138]
+layout_mode = 2
+
+[node name="LabelInstructions" type="Label" parent="Instructions/MarginContainer/VBoxContainer" unique_id=1491221619]
+layout_mode = 2
+text = "Move camera : WASD or arrow keys
+Zoom : mouse wheel or + / -
+Draw : left click (pauses simulation)
+Erase: right click (pauses simulation)
+"
+
+[node name="ButtonClose" type="Button" parent="Instructions/MarginContainer/VBoxContainer" unique_id=1751548464]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Close"
+
+[connection signal="pressed" from="Controls/MarginContainer/HBoxContainer/ButtonUnpause" to="." method="_on_button_unpause_pressed"]
+[connection signal="pressed" from="Controls/MarginContainer/HBoxContainer/ButtonClearAll" to="." method="_on_button_clear_all_pressed"]
+[connection signal="pressed" from="Controls/MarginContainer/HBoxContainer/ButtonInstructions" to="." method="_on_button_instructions_pressed"]
+[connection signal="pressed" from="Controls/MarginContainer/HBoxContainer/ButtonMinus" to="." method="_on_button_minus_pressed"]
+[connection signal="pressed" from="Controls/MarginContainer/HBoxContainer/ButtonPlus" to="." method="_on_button_plus_pressed"]
+[connection signal="pressed" from="Instructions/MarginContainer/VBoxContainer/ButtonClose" to="." method="_on_button_close_pressed"]
