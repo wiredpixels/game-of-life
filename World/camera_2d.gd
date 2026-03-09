@@ -1,9 +1,13 @@
 extends Camera2D
 
+@export var world : World
 @export var move_speed: float = 300.0
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.5
 @export var max_zoom: float = 128.0
+
+var dragging := false
+
 
 func _process(delta: float) -> void:
 	var direction := Vector2.ZERO
@@ -29,6 +33,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			apply_zoom(1, 4)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			apply_zoom(-1, 4)
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_MIDDLE:
+			dragging = event.pressed
+
+	if event is InputEventMouseMotion and dragging:
+		global_position -= event.relative / zoom
+
+	if event is InputEventScreenDrag:
+		world.is_mobile_player = true
+		if world.camera_mode_zoom:
+			apply_zoom(sign(event.relative.y), 4)
+		elif world.camera_mode_move:
+			global_position -= event.relative / zoom
 
 
 func _handle_zoom() -> void:

@@ -1,16 +1,31 @@
 extends Node2D
+class_name World
 
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var tile_map_layer_2: TileMapLayer = $TileMapLayer2
 
 const alive : Vector2i = Vector2i(0, 0)
 
+static var _instance : World
+
 var current_state : TileMapLayer
 var next_state : TileMapLayer
 var total_cells = []
 var paused : bool = false
-var frame_delay_ms : int = 0
+var frame_delay_ms : int = 50
 var last_frame := -100
+
+var camera_mode_move := false
+var camera_mode_zoom := false
+var is_mobile_player := false
+
+static func get_instance() -> World:
+	return _instance
+
+
+func _ready() -> void:
+	_instance = self
+
 
 func _process(delta: float) -> void:
 	if paused:

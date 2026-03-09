@@ -13,6 +13,9 @@ config_version=5
 config/name="game_of_life"
 run/main_scene="uid://dqyqbp4je8dps"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/image="uid://dsty4nfysvtyn"
 config/icon="uid://dsty4nfysvtyn"
 
 [display]
